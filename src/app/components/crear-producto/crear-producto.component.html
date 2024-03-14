@@ -1,0 +1,43 @@
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="card">
+            <div class="card-body text-center">
+                <span class="titulo">{{titulo | uppercase}}</span>
+
+                <form [formGroup]="productoForm" (ngSubmit)="GuardarProducto()">
+                    <div class="mt-5">
+                        <input type="text" formControlName="producto" placeholder="Producto" class="form-control form-control-lg-3">
+                        <div class="text-danger" *ngIf="productoForm.get('producto')?.hasError('required') && productoForm.get('producto')?.touched">
+                            <span>El producto es <strong>obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <input type="text" formControlName="categoria" placeholder="Categoria" class="form-control form-control-lg-3">
+                        <div class="text-danger" *ngIf="productoForm.get('categoria')?.hasError('required') && productoForm.get('categoria')?.touched">
+                            <span>La categoria es <strong>obligatoria</strong></span>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <input type="text" formControlName="ubicacion" placeholder="Ubicación" class="form-control form-control-lg-3">
+                        <div class="text-danger" *ngIf="productoForm.get('ubicacion')?.hasError('required') && productoForm.get('ubicacion')?.touched">
+                            <span>La ubicación es <strong>obligatoria</strong></span>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <input type="number" formControlName="precio" placeholder="Precio" class="form-control form-control-lg-3">
+                        <div class="text-danger" *ngIf="productoForm.get('precio')?.hasError('required') &&  productoForm.get('precio')?.touched">
+                            <span>El precio es <strong>obligatorio</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <button class="btn btn-secondary float-start" [routerLink]="['/']" routerLinkActive="router-link-active" >Volver</button>                        
+                        <button class="btn btn-primary float-end" [disabled]="productoForm.invalid">Guardar</button>                        
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
